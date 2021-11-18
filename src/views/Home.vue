@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <p>{{ kittens }}</p>
+    <div v-for="kitten in kittens">
+      <p>{{ kitten.name }}</p>
+      <router-link v-bind:to="`kittens/${kitten.id}`">More Info</router-link>
+    </div>
   </div>
 </template>
 
