@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import KittensNew from '../views/KittensNew.vue'
 import KittensShow from '../views/KittensShow.vue'
+import KittensEdit from '../views/KittensEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -18,10 +19,16 @@ const routes = [
     component: KittensNew
   },
   {
+    path: '/kittens/:id/edit',
+    name: 'kittens-edit',
+    component: KittensEdit
+  },
+  {
     path: '/kittens/:id',
     name: 'kittens-show',
     component: KittensShow
   },
+  
   {
     path: '/about',
     name: 'About',

@@ -1,26 +1,26 @@
 <template>
-  <div class="Create - Kitten">
+  <div class="kittens-edit">
     <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
+      <h1>Kitten edit</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <div>
         <label>Name:</label>
-        <input type="text" v-model="newKittenParams.name" />
+        <input type="text" v-model="editKittenParams.name" />
       </div>
       <div>
         <label>Breed:</label>
-        <input type="breed" v-model="newKittenParams.breed" />
+        <input type="text" v-model="editKittenParams.breed" />
       </div>
       <div>
         <label>Age:</label>
-        <input type="Age" v-model="newKittenParams.age" />
+        <input type="text" v-model="editKittenParams.age" />
       </div>
       <div>
-        <label>Image</label>
-        <input type="Age" v-model="newKittenParams.image" />
-      </div>
+        <label>Images:</label>
+        <input type="text" v-model="editKittenParams.image" />
+      </div>   
       <input type="submit" value="Submit" />
     </form>
   </div>
@@ -28,18 +28,17 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data: function () {
     return {
-      newKittenParams: {},
-      errors: [],
+      editKittenParams: {},
+      errors: []
     };
   },
   methods: {
     submit: function () {
       axios
-        .post("/kittens", this.newKittenParams)
+        .patch("/kittens/" + this.$route.params.id, this.editKittenParams)
         .then((response) => {
           console.log(response.data);
           this.$router.push("/");
@@ -48,6 +47,14 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
+    getKitten: function() {
+      axios.get("/kittens/" + this.$route.params.id).then(response => {
+        console.log(response.data);
+        this.editKittenParams = response.data;
+      });      
+    }
   },
+  created: function() {
+    this.getKitten();
+  }
 };
-</script>

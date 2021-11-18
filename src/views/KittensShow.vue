@@ -13,6 +13,11 @@
       <b>Age:</b>
       {{ kitten.age }}
     </p>
+    <p>
+      <b>Image:</b>
+      {{ kitten.image }}
+    </p>
+    <p><router-link v-bind:to="`/kittens/${kitten.id}/edit`">Edit kitten</router-link></p>
   </div>
 </template>
 
