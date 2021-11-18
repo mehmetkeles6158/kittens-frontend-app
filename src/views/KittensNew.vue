@@ -1,10 +1,7 @@
 <template>
   <div class="Create - Kitten">
     <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
+      <h1>Make Kitten</h1>
       <div>
         <label>Name:</label>
         <input type="text" v-model="newKittenParams.name" />
@@ -33,20 +30,14 @@ export default {
   data: function () {
     return {
       newKittenParams: {},
-      errors: [],
     };
   },
   methods: {
     submit: function () {
-      axios
-        .post("/kittens", this.newKittenParams)
-        .then((response) => {
-          console.log(response.data);
-          this.$router.push("/");
-        })
-        .catch((error) => {
-          this.errors = error.response.data.errors;
-        });
+      axios.post("/kittens", this.newKittenParams).then((response) => {
+        console.log(response.data);
+        this.$router.push("/");
+      });
     },
   },
 };

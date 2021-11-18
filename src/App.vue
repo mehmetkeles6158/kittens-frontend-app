@@ -5,6 +5,8 @@
       |
       <router-link to="/about">About</router-link>
       |
+      <router-link to="/kittens">All Kittens</router-link>
+      |
       <router-link to="/kittens/new">Add Kitten</router-link>
     </div>
     <router-view />

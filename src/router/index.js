@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import KittensNew from '../views/KittensNew.vue'
+import KittensIndex from '../views/KittensIndex.vue'
 import KittensShow from '../views/KittensShow.vue'
 import KittensEdit from '../views/KittensEdit.vue'
 
@@ -13,10 +14,16 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  
   {
     path: '/kittens/new',
     name: 'kittens-create',
     component: KittensNew
+  },
+  {
+    path: '/kittens',
+    name: 'kittens-index',
+    component: KittensIndex
   },
   {
     path: '/kittens/:id/edit',
