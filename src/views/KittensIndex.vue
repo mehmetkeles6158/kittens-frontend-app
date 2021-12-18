@@ -1,9 +1,14 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <hr />
+    <hr />
     <div v-for="kitten in kittens">
-      <p>{{ kitten.name }}</p>
-      <router-link v-bind:to="`kittens/${kitten.id}`">More Info</router-link>
+      <h2>{{ kitten.name }}</h2>
+      <router-link v-bind:to="`kittens/${kitten.id}`">
+        <img v-bind:src="kitten.image" />
+      </router-link>
+      <hr />
     </div>
   </div>
 </template>
@@ -15,7 +20,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
+      message: "------KITTENS------",
       kittens: [],
     };
   },
